@@ -25,12 +25,28 @@ createMigration() {
     || (end 'Error while creating migration...' && return 1)
 }
 
+# Gets the UP and DOWN transactions
+# from the migration
+# $1 => FILE NAME
+# $2 => 'UP' or 'DOWN'
+getTransaction() {
+  local file="$1"
+  if [ "${2^^}" = "UP" ]
+  then
+    local begin="-- $UP_LABEL"
+    local end="-- $DOWN_LABEL"
+  else
+    local begin="-- $DOWN_LABEL"
+    local end="-- $UP_LABEL"
+  fi
+
+  sed -n -e '/'"$begin"'/,/'"$end"'/p' "$file" | grep -v -e '^--' -e '^$'
+}
+
 # Checks if can connect
 # Checks if table needs to be created
 initMigrations() {
   [[ -x "$EXEC" ]] || end "Could not find database executable."
-
-  echo "$1" >&2
 
   # PSQL => ./database.sh
   psql "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';" | grep -q "$MIGRATIONS_TABLE"

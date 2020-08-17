@@ -23,6 +23,8 @@ case "$ACTION" in
     [[ $# -eq 0 ]] && end "Please specify a migration name."
     # createMigration => ./migration.sh
     createMigration "$@";;
+  "up")
+    getTransaction "$1" "$2";;
   *)
     # end => ./utils.sh
     end "Unknown action.";;
