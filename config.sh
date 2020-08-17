@@ -8,3 +8,9 @@ MIGRATIONS_DIR="./migrations"
 UP_LABEL="====== UP ======"
 # Label for DOWN transaction
 DOWN_LABEL="===== DOWN ====="
+# Migrations table name
+MIGRATIONS_TABLE="migrations"
+# Database executable
+EXEC="$(command -v psql)"
+# Database info
+DATABASE="vitor"
