@@ -1,6 +1,6 @@
-# A Bash / PostgreSQL Migration Tool #
+# A BASH / PostgreSQL Migration Tool #
 
-This is a simple migration tool written in BASH, for defining sets of changes while updating a database schema.
+A simple migration tool written in BASH, for defining sets of changes while updating a database schema.
 
 ## Usage ##
 
@@ -9,7 +9,7 @@ This is a simple migration tool written in BASH, for defining sets of changes wh
 Available actions:
 - init
     - Initializes, creating a table in the DB and a migrations folder.
-- create <name>
+- create `<name>`
     - Creates a new migration in the initialized folder.
 - pending
     - Display all pending migrations
