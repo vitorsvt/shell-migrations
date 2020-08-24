@@ -1,10 +1,15 @@
 #!/bin/bash
 
-. './config.sh'
-. './utils.sh'
-. './template.sh'
-. './database.sh'
-. './migration.sh'
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+. "$DIR/src/config.sh"
+. "$DIR/src/utils.sh"
+. "$DIR/src/template.sh"
+. "$DIR/src/database.sh"
+. "$DIR/src/migration.sh"
+
+# setup migrations directory
+MIGRATIONS_DIR="$DIR/$MIGRATIONS_DIR"
 
 # checkDirectory => ./utils.sh
 checkDirectory "$MIGRATIONS_DIR"
